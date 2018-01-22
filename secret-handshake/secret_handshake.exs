@@ -15,9 +15,9 @@ defmodule SecretHandshake do
   """
 @binaries [
     {"wink", 1},
-    {"double blink", 2},
-    {"close your eyes", 4},
-    {"jump", 8},
+    {"double blink", 10},
+    {"close your eyes", 100},
+    {"jump", 1000},
   ]
 
   @spec commands(code :: integer) :: list(String.t())
