@@ -14,10 +14,10 @@ defmodule SecretHandshake do
   10000 = Reverse the order of the operations in the secret handshake
   """
 @binaries [
-    {"wink", 1},
-    {"double blink", 10},
-    {"close your eyes", 100},
-    {"jump", 1000},
+    {1,"wink"},
+    {10, "double blink"},
+    {100, "close your eyes"},
+    {1000, "jump"}
   ]
 
   @spec commands(code :: integer) :: list(String.t())
