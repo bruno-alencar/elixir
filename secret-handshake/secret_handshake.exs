@@ -22,12 +22,15 @@ defmodule SecretHandshake do
 
   @spec commands(code :: integer) :: list(String.t())
   def commands(code) do
-    cond do 
-      code == 1 -> ["wink"] 
-      code == 2 -> ["double blink"]
-      code == 4 -> ["close your eyes"]
-      code == 4 -> ["jump"]
-    end
+
+    Enum.list(@binaries, Integer.to_string(code, 2)) |> Enum.into({})
+    # cond do 
+      # code == 1 -> ["wink"] 
+      # code == 2 -> ["double blink"]
+      # code == 4 -> ["close your eyes"]
+      # code == 4 -> ["jump"]
+      # code == 1 -> fn(n) -> Integer.to_string(code, 2);
+    # end
   end
 end
 
