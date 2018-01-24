@@ -24,23 +24,8 @@ defmodule SecretHandshake do
 
   @spec commands(code :: integer) :: list(String.t())
   def commands(code) do
-    
-    # Enum.map(@mapBinaries, fn{key, val} -> key == Integer.to_string(code, 2) val end)
-     Integer.to_string(code, 2) |> Map.get(@mapBinaries, & &1) |> Enum.to_list(& &1)
-
-
-    # Map.get(@mapBinaries, 1)
-
-    # @mapBinaries |> Enum.find(fn {key, val} -> key == Integer.to_string(code, 2) end) |> elem(0)
-    # Map.take(@mapBinaries, & &1[Integer.to_string(code, 2)])
-
-    # cond do
-      # code == 1 -> ["wink"]
-      # code == 2 -> ["double blink"]
-      # code == 4 -> ["close your eyes"]
-      # code == 4 -> ["jump"]
-      # code == 1 -> fn(n) -> Integer.to_string(code, 2);
-    # end
+    a = Integer.to_string(code, 2) 
+    [@mapBinaries[String.to_integer(a)]]
   end
 end
 
