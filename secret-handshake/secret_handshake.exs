@@ -22,10 +22,16 @@ defmodule SecretHandshake do
 
 @mapBinaries %{ 1 => "wink", 10 => "double blink", 100 => "close your eyes", 1000 => "jump"}
 
+  require Enum
   @spec commands(code :: integer) :: list(String.t())
   def commands(code) do
-    a = Integer.to_string(code, 2) 
-    [@mapBinaries[String.to_integer(a)]]
+    code 
+    |> Integer.to_string(2)
+    |> String.to_integer
+    |> Enum.with_index
+    # |> Enum.map(@mapBinaries, fn{key, value} -> key == &1 end)
+
+    # |> Enum.into([])
   end
 end
 
