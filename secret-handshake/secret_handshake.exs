@@ -25,10 +25,14 @@ defmodule SecretHandshake do
   require Enum
   @spec commands(code :: integer) :: list(String.t())
   def commands(code) do
-    code 
+    bits = code 
     |> Integer.to_string(2)
     |> String.to_integer
-    |> Enum.with_index
+
+    list = []
+
+    handshake = Map.get(@mapBinaries, bits)
+    |> Enum.list
     # |> Enum.map(@mapBinaries, fn{key, value} -> key == &1 end)
 
     # |> Enum.into([])
