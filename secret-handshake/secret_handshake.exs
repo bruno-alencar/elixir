@@ -29,10 +29,8 @@ defmodule SecretHandshake do
     |> Integer.to_string(2)
     |> String.to_integer
 
-    list = []
 
-    handshake = Map.get(@mapBinaries, bits)
-    |> Enum.list
+    [Map.get(@mapBinaries, bits)]
     # |> Enum.map(@mapBinaries, fn{key, value} -> key == &1 end)
 
     # |> Enum.into([])
