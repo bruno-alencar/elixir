@@ -22,15 +22,23 @@ defmodule SecretHandshake do
 
 @mapBinaries %{ 1 => "wink", 10 => "double blink", 100 => "close your eyes", 1000 => "jump"}
 
-  require Enum
-  @spec commands(code :: integer) :: list(String.t())
-  def commands(code) do
-    bits = code 
+  def get_item (code) do
+    code
     |> Integer.to_string(2)
     |> String.to_integer
+  end
 
+  @spec commands(code :: integer) :: list(String.t())
+  def commands(code) do
 
+    bits = get_item(code)
+
+    # bits = Integer.digits(code, 2)
+
+    # Enum.map(bits, fn(n) -> n = 1 end)
+    # |> Enum.map(fn(n))
     [Map.get(@mapBinaries, bits)]
+
     # |> Enum.map(@mapBinaries, fn{key, value} -> key == &1 end)
 
     # |> Enum.into([])
