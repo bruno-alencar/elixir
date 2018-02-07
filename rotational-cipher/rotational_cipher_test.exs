@@ -15,7 +15,7 @@ defmodule RotationalCipherTest do
     assert RotationalCipher.rotate(plaintext, shift) == "b"
   end
 
-  @tag :pending
+  # @tag :pending
   test "rotate a by 26, same output as input" do
     plaintext = "a"
     shift = 26

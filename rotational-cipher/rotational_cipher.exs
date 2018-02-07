@@ -6,11 +6,15 @@ defmodule RotationalCipher do
   iex> RotationalCipher.rotate("Attack at dawn", 13)
   "Nggnpx ng qnja"
   """
+
   @spec rotate(text :: String.t(), shift :: integer) :: String.t()
   def rotate(text, shift) do
-      # Enum.map(number, fn{x, v} -> x = text end) 
-      index = Enum.find_index([?a..?z], fn(x) -> x = text end)
-      Enum.find([?a..?z], nil, fn(x) -> x = shift end)
+      array = for n <- ?a..?z, do: << n :: utf8 >>
+
+      index = Enum.find_index(array, fn(x) -> x == text end)
+
+      # if def(index+shift > 26 do  
+      Enum.at(array, index+shift)
   end
 end
 
