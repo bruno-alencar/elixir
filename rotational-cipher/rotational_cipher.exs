@@ -13,8 +13,7 @@ defmodule RotationalCipher do
 
       index = Enum.find_index(array, fn(x) -> x == text end)
 
-      # if def(index+shift > 26 do  
-      Enum.at(array, index+shift)
+      Enum.at(array, rem(index+shift, 26))
       # Enum.map(number, fn{x, v} -> x = text end) 
       # index = [?a..?z]
       # |> Enum.find_index(fn(x) -> x = "z" end)
