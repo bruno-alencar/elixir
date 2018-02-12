@@ -17,5 +17,14 @@ defmodule Strain do
   """
   @spec discard(list :: list(any), fun :: ((any) -> boolean)) :: list(any)
   def discard(list, fun) do
+
+    list
+    |> Enum.map (fn (item) -> {
+        cond do
+          item % 2 == 0 -> "odd"
+          item % 1 == 1 -> "even"
+          true -> nil
+        end
+    } end)
   end
 end
