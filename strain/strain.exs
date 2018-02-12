@@ -7,14 +7,12 @@ defmodule Strain do
   """
   @spec keep(list :: list(any), fun :: ((any) -> boolean)) :: list(any)
   def keep(list, fun) do
-    
     list
-    |> Enum.map(fn(item) -> {
+    |> Enum.map(fn(item) ->
        cond do
            fun -> item
        end
-      }end)
-
+      end)
   end
 
   @doc """
