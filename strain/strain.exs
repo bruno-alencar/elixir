@@ -7,6 +7,14 @@ defmodule Strain do
   """
   @spec keep(list :: list(any), fun :: ((any) -> boolean)) :: list(any)
   def keep(list, fun) do
+    
+    list
+    |> Enum.map(fn(item) -> {
+       cond do
+           fun -> item
+       end
+      }end)
+
   end
 
   @doc """
@@ -18,13 +26,16 @@ defmodule Strain do
   @spec discard(list :: list(any), fun :: ((any) -> boolean)) :: list(any)
   def discard(list, fun) do
 
-    list
-    |> Enum.map (fn (item) -> {
-        cond do
-          item % 2 == 0 -> "odd"
-          item % 1 == 1 -> "even"
-          true -> nil
-        end
-    } end)
+  # list
+  # |> fun
+
+    # list
+    # |> Enum.map (fn (item) -> {
+    #     cond do
+    #       item % 2 == 0 -> "odd"
+    #       item % 1 == 1 -> "even"
+    #       true -> nil
+    #     end
+    # } end)
   end
 end
