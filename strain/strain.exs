@@ -7,12 +7,7 @@ defmodule Strain do
   """
   @spec keep(list :: list(any), fun :: ((any) -> boolean)) :: list(any)
   def keep(list, fun) do
-    list
-    |> Enum.map(fn(item) ->
-       cond do
-           fun -> item
-       end
-      end)
+    do_validation(list, fun, true)
   end
 
   @doc """
@@ -23,17 +18,14 @@ defmodule Strain do
   """
   @spec discard(list :: list(any), fun :: ((any) -> boolean)) :: list(any)
   def discard(list, fun) do
+    do_validation(list, fun, false)
+  end
 
-  # list
-  # |> fun
-
-    # list
-    # |> Enum.map (fn (item) -> {
-    #     cond do
-    #       item % 2 == 0 -> "odd"
-    #       item % 1 == 1 -> "even"
-    #       true -> nil
-    #     end
-    # } end)
+  defp do_validation(list, fun, conditional) do
+      list
+      |> Enum.map(fn(item) ->
+            if fun.(item) == conditional do item end
+        end)
+      |> Enum.filter(fn(x) -> x != nil end)
   end
 end
