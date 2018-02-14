@@ -51,7 +51,7 @@ defmodule ProteinTranslation do
   @spec of_codon(String.t()) :: { atom, String.t() }
   def of_codon(codon) do
     @mapItems
-    |> Map.get(codon)
+    |> Map.fetch(codon)
   end
 end
 
