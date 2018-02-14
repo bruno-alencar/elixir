@@ -57,7 +57,7 @@ defmodule ProteinTranslationTest do
     assert ProteinTranslation.of_codon("UGA") == { :ok, "STOP" }
   end
 
-  @tag :pending
+  # @tag :pending
   test "translates rna strand into correct protein" do
     strand = "AUGUUUUGG"
     assert ProteinTranslation.of_rna(strand) == { :ok, ~w(Methionine Phenylalanine Tryptophan) }

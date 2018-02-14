@@ -3,7 +3,12 @@ defmodule ProteinTranslation do
   Given an RNA string, return a list of proteins specified by codons, in order.
   """
   @spec of_rna(String.t()) :: { atom,  list(String.t()) }
-  def of_rna(rna) do
+  def of_rna(rna)do
+    rna
+    |> String.to_charlist
+    |> Stream.chunk_every(3)
+    |> Enum.to_list
+    |> Enum.map(fn(item) -> to_string(item) |> of_codon end)
   end
 
   @doc """
