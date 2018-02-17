@@ -3,7 +3,7 @@ defmodule ProteinTranslation do
   Given an RNA string, return a list of proteins specified by codons, in order.
   """
 
-   @mapItems %{  
+   @mapItems %{
   "UGU" => "Cysteine",
   "UGC" => "Cysteine",
   "UUA" => "Leucine",
@@ -30,16 +30,19 @@ defmodule ProteinTranslation do
     |> String.to_charlist
     |> Stream.chunk_every(3)
     |> Enum.to_list
-    |> Enum.map(fn(item) ->
-        to_string(item) 
+    |> Enum.map(fn(item) ->  
+        to_string(item)
         |> of_codon
         |> case do
-              {:ok, res} -> res 
+              :ok -> item
               err -> err
            end
-        |> {:ok}
-     end)
-    |> {:ok, all}
+      end)
+    |>  Enum.join
+    # |> Enum.join()
+    # |> :ok
+      
+    # |> {:ok}
   end
 
   @doc """
