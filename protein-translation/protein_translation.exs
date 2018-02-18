@@ -26,7 +26,7 @@ defmodule ProteinTranslation do
   @spec of_rna(String.t()) :: { atom,  list(String.t()) }
   def of_rna(rna) do
 
-    rna
+    response = rna
     |> String.to_charlist
     |> Stream.chunk_every(3)
     |> Enum.to_list
@@ -34,11 +34,14 @@ defmodule ProteinTranslation do
         to_string(item)
         |> of_codon
         |> case do
-              :ok -> item
+              {:ok, res} -> res 
               err -> err
            end
       end)
-    |>  Enum.join
+
+    {:ok, response}
+
+  
     # |> Enum.join()
     # |> :ok
       
