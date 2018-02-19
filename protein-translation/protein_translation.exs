@@ -34,11 +34,11 @@ defmodule ProteinTranslation do
         to_string(item)
         |> of_codon
         |> case do
-              {:ok, res} -> res 
+              {:ok, res} -> res
               err -> err
            end
       end)
-
+    |> Enum.filter(fn (e) -> e != "STOP"  end)
     {:ok, response}
 
   
