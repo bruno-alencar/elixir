@@ -6,9 +6,11 @@ defmodule ProteinTranslation do
   def of_rna(rna)do
     rna
     |> String.to_charlist
-    |> Stream.chunk_every(3)
+    # |> Stream.chunk_every(3)
     |> Enum.to_list
-    |> Enum.map(fn(item) -> to_string(item) |> of_codon end)
+    |> Enum.map(fn(item) -> to_string(item) end)
+    |> of_codon 
+    
   end
 
   @doc """
